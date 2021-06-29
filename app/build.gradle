@@ -79,8 +79,8 @@ dependencies {
     implementation "androidx.room:room-rxjava2:$room_version"
 
     // navigation
-    implementation 'androidx.navigation:navigation-fragment:2.3.2'
-    implementation 'androidx.navigation:navigation-ui:2.3.2'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.11.0'

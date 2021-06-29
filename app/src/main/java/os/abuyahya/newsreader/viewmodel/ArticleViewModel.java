@@ -24,7 +24,7 @@ public class ArticleViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<ArrayList<Article>> mArticleLiveData = new MutableLiveData<>();
-    private LiveData<List<Article>> articleFromDBLiveData = new MutableLiveData<>();
+    private LiveData<List<Article>> articleFromDBLiveData = null;
     private MutableLiveData<String> mErrorLiveData = new MutableLiveData<>();
 
     @ViewModelInject

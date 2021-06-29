@@ -35,7 +35,6 @@ public class ArticalFrag extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentArticleBinding.inflate(inflater, container, false);
-        setHasOptionsMenu(true);
         args = ArticalFragArgs.fromBundle(getArguments());
 
         if (args != null) {
@@ -71,19 +70,4 @@ public class ArticalFrag extends Fragment {
         NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
-
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        inflater.inflate(R.menu.article_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.ic_save){
-            Toast.makeText(requireContext(), "Save", Toast.LENGTH_SHORT).show();
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-
 }
