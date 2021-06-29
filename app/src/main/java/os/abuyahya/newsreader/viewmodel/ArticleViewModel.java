@@ -10,6 +10,7 @@ import androidx.paging.PageKeyedDataSource;
 import androidx.paging.PagedList;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.functions.Function;
@@ -23,7 +24,7 @@ public class ArticleViewModel extends ViewModel {
 
     private Repository repository;
     private MutableLiveData<ArrayList<Article>> mArticleLiveData = new MutableLiveData<>();
-    private MutableLiveData<ArrayList<Article>> mArticleFromDBLiveData = new MutableLiveData<>();
+    private LiveData<List<Article>> articleFromDBLiveData = new MutableLiveData<>();
     private MutableLiveData<String> mErrorLiveData = new MutableLiveData<>();
 
     @ViewModelInject
@@ -35,8 +36,8 @@ public class ArticleViewModel extends ViewModel {
         return mArticleLiveData;
     }
 
-    public MutableLiveData<ArrayList<Article>> getmArticleFromDBLiveData() {
-        return mArticleFromDBLiveData;
+    public LiveData<List<Article>> getmArticleFromDBLiveData() {
+        return articleFromDBLiveData;
     }
 
     public MutableLiveData<String> getMutErrorLiveData() {
@@ -63,11 +64,6 @@ public class ArticleViewModel extends ViewModel {
     }
 
     public void getArticlesFormDB(){
-        repository.getArticlesFromDB().observeOn(Schedulers.io())
-                .subscribeOn(AndroidSchedulers.mainThread())
-                .subscribe(
-                        result -> mArticleFromDBLiveData.setValue(result),
-                        error -> mErrorLiveData.setValue(error.getMessage())
-                );
+        articleFromDBLiveData = repository.getArticlesFromDB();
     }
 }

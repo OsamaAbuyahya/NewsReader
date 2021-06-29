@@ -7,6 +7,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import io.reactivex.rxjava3.core.Observable;
 import os.abuyahya.newsreader.model.Article;
@@ -18,5 +19,5 @@ public interface ArticleDao {
     void insertPokemon(ArrayList<Article> articles);
 
     @Query("SELECT * FROM articles_table")
-    Observable<ArrayList<Article>> getArticles();
+    LiveData<List<Article>> getArticles();
 }

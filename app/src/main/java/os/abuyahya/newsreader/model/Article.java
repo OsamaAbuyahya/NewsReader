@@ -1,6 +1,7 @@
 package os.abuyahya.newsreader.model;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -15,7 +16,9 @@ public class Article {
     private String created_at, title, url, author, points, story_text, comment_text, story_title, story_url, objectID;
     private int num_comments, story_id, parent_id, created_at_i, relevancy_score;
     @SerializedName("_tags")
+    @Ignore
     private ArrayList<String> tags;
+    @Ignore
     private HighlightResult _highlightResult;
 
     public Article() {

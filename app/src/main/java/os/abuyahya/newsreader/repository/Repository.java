@@ -3,6 +3,7 @@ package os.abuyahya.newsreader.repository;
 import androidx.lifecycle.LiveData;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -31,7 +32,7 @@ public class Repository {
         articleDao.insertPokemon(articles);
     }
 
-    public Observable<ArrayList<Article>> getArticlesFromDB(){
+    public LiveData<List<Article>> getArticlesFromDB(){
         return articleDao.getArticles();
     }
 
