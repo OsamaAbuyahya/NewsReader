@@ -14,9 +14,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="@dimen/_5sdp"
         app:cardUseCompatPadding="true"
-        app:cardElevation="@dimen/_5sdp"
+        app:cardElevation="@dimen/_8sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,7 +29,7 @@
 
             <TextView
                 android:id="@+id/txt_title"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:gravity="start"
                 android:ellipsize="end"
@@ -37,7 +38,8 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintEnd_toStartOf="@id/ic_next"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -53,6 +55,7 @@
                 android:drawableStart="@drawable/ic_person"
                 android:drawableLeft="@drawable/ic_person"
                 android:drawablePadding="@dimen/_5sdp"
+                android:drawableTint="@color/purple_700"
                 android:text="Author"
                 android:textColor="@color/black"
                 android:textSize="16sp"
@@ -66,12 +69,25 @@
                 android:text="99"
                 android:drawableStart="@drawable/ic_comment"
                 android:drawableLeft="@drawable/ic_comment"
+                android:drawableTint="@color/purple_500"
                 android:drawablePadding="@dimen/_5sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:textColor="@color/black"
                 android:textSize="16sp"
                 tools:ignore="UseCompatTextViewDrawableXml"/>
+
+            <ImageView
+                android:id="@+id/ic_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_8sdp"
+                android:src="@drawable/ic_navigate_next"
+                android:visibility="invisible"
+                tools:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/purple_700" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

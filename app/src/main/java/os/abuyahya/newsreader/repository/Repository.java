@@ -11,6 +11,7 @@ import io.reactivex.rxjava3.core.Observable;
 import os.abuyahya.newsreader.db.ArticleDao;
 import os.abuyahya.newsreader.model.Article;
 import os.abuyahya.newsreader.model.ArticleResponse;
+import os.abuyahya.newsreader.model.OfflineArticles;
 import os.abuyahya.newsreader.network.ArticleApiService;
 
 public class Repository {
@@ -28,12 +29,31 @@ public class Repository {
         return articleApiService.getArticles(page, hitsPerPage);
     }
 
-    public void insertArticles(ArrayList<Article> articles){
-        articleDao.insertPokemon(articles);
+    public void insertArticles(List<Article> articles){
+        articleDao.insertArticle(articles);
+    }
+
+    public void insertOfflineArticles(OfflineArticles articles){
+        articleDao.insertOfflineArticles(articles);
+    }
+
+    public boolean isOffline(String title) {
+        return articleDao.isOfflineArticle(title);
+    }
+
+    public void deleteCachingArticles(){
+        articleDao.deleteCachingArticles();
     }
 
     public LiveData<List<Article>> getArticlesFromDB(){
         return articleDao.getArticles();
     }
 
+    public boolean isExisting(String objectID) {
+        return articleDao.isExisting(objectID);
+    }
+
+    public void deleteOfflineArticle(String title) {
+        articleDao.deleteOfflineArticle(title);
+    }
 }

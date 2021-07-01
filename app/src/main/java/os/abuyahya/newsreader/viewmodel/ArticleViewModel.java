@@ -18,6 +18,7 @@ import io.reactivex.rxjava3.schedulers.Schedulers;
 import os.abuyahya.newsreader.model.Article;
 import os.abuyahya.newsreader.model.ArticleDataSourceFactory;
 import os.abuyahya.newsreader.model.ArticleResponse;
+import os.abuyahya.newsreader.model.OfflineArticles;
 import os.abuyahya.newsreader.repository.Repository;
 
 public class ArticleViewModel extends ViewModel {
@@ -59,11 +60,31 @@ public class ArticleViewModel extends ViewModel {
                 );
     }
 
-    public void insetArticles(ArrayList<Article> articles){
+    public void insetArticles(List<Article> articles){
         repository.insertArticles(articles);
+    }
+
+    public void insetOfflineArticles(OfflineArticles articles){
+        repository.insertOfflineArticles(articles);
+    }
+
+    public boolean isOffline(String title) {
+        return repository.isOffline(title);
+    }
+
+    public void deleteCachingArticles(){
+        repository.deleteCachingArticles();
     }
 
     public void getArticlesFormDB(){
         articleFromDBLiveData = repository.getArticlesFromDB();
+    }
+
+    public boolean isExisting(String objectID) {
+        return repository.isExisting(objectID);
+    }
+
+    public void deleteOfflineArticle(String title) {
+        repository.deleteOfflineArticle(title);
     }
 }
